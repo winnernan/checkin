@@ -11,6 +11,7 @@ const glados = async () => {
       method: 'POST',
       headers: { ...headers, 'content-type': 'application/json' },
       body: '{"token":"glados.network"}',
+      body: '{"token":"glados.one"}',
     }).then((r) => r.json())
     const status = await fetch('https://glados.rocks/api/user/status', {
       method: 'GET',
@@ -29,7 +30,6 @@ const glados = async () => {
     ]
   }
 }
-
 const notify = async (contents) => {
   const token = process.env.NOTIFY
   if (!token || !contents) return
@@ -44,9 +44,7 @@ const notify = async (contents) => {
     }),
   })
 }
-
 const main = async () => {
   await notify(await glados())
 }
-
 main()
